@@ -18,7 +18,7 @@ const movie_1 = require("./routes/movie");
 const tv_1 = require("./routes/tv");
 const anime_1 = require("./routes/anime");
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send((0, home_1.Home)());
