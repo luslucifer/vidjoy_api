@@ -15,7 +15,7 @@ export async function secondOp (url:string,t:string|null,id:string){
 }
 
 export async function Movie(id: string) {
-    const url = `https://www.moviekex.online/movie/${id}`;
+    const url = `https://moviekexonline-29aedc6d6588.herokuapp.com/movie/${id}`;
 try {
     const t = await rClient.get(id)
 

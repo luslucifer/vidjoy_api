@@ -3,7 +3,7 @@ import { rClient } from "../middlewares/redis";
 import { secondOp } from "./movie";
 import { MediaData } from "../interfaces/mvtv";
 export async function Tv(id: string ,ss:string , ep :string) {
-    const url = `https://www.moviekex.online/tv/${id}/${ss}/${ep}`;
+    const url = `https://moviekexonline-29aedc6d6588.herokuapp.com/tv/${id}/${ss}/${ep}`;
     const tvId = id + '_' + ss +'_' + ep
     try {
         const t = await rClient.get(tvId)

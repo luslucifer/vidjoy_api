@@ -4,7 +4,7 @@ import { Anime } from "../interfaces/anime";
 import { rClient } from "../middlewares/redis";
 
 export async function Anime(id:string,ep:string,type:string) {
-    const url = `https://www.moviekex.online/anime/${id}/${ep}/${type}`
+    const url = `https://moviekexonline-29aedc6d6588.herokuapp.com/anime/${id}/${ep}/${type}`
     const tvId:string  = id + '_' +ep + '_' + type
 
     try {
