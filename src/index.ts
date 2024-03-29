@@ -1,12 +1,14 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import { Home } from './routes/home';
 import { Movie } from './routes/movie';
 import { Tv } from './routes/tv';
 import { Anime } from './routes/anime';
+import serverless from "serverless-http";
 const app = express();
-const PORT = process.env.PORT || 3002;
+// const PORT = process.env.PORT || 3002;
 
-app.use(express.json());
+// app.use(express.json());
+const router = Router()
 
 app.get('/', (req: Request, res: Response) => {
     res.send(Home());
@@ -34,7 +36,12 @@ app.get('/anime/:id/:ep/:type',async (req:Request,res:Response)=>{
 
 
 
+app.use("/app/" , router)
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+export const handler = serverless(app);
+
+
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
