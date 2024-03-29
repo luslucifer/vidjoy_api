@@ -4,10 +4,11 @@ import { Movie } from './routes/movie';
 import { Tv } from './routes/tv';
 import { Anime } from './routes/anime';
 import serverless from "serverless-http";
+
 const app = express();
 // const PORT = process.env.PORT || 3002;
 
-// app.use(express.json());
+app.use(express.json());
 const router = Router()
 
 app.get('/', (req: Request, res: Response) => {
@@ -39,6 +40,8 @@ app.get('/anime/:id/:ep/:type',async (req:Request,res:Response)=>{
 app.use("/app/" , router)
 
 export const handler = serverless(app);
+// export const handler = serverless-http(app);
+
 
 
 
