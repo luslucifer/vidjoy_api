@@ -7,7 +7,7 @@ export async function Home() {
                 console.error('Error reading HTML file:', err);
                 reject(err); // Reject the promise with the error
             } else {
-                console.log(data);
+                // console.log(data);
                 resolve(data); // Resolve the promise with the file content
             }
         });
