@@ -10,14 +10,14 @@ export async function secondOp (url:string,t:string|null,id:string){
     console.log(t)
     await rClient.set(id,JSON.stringify(data),'EX',86400) // will expire in 24 hh 
     return data
-
-
 }
+
 
 export async function Movie(id: string) {
     const url = `https://moviekexonline-29aedc6d6588.herokuapp.com/movie/${id}`;
 try {
     const t = await rClient.get(id)
+
 
     if (t!=null){
         try {
