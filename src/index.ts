@@ -4,6 +4,7 @@ import { Home } from './routes/home';
 import { Movie } from './routes/movie';
 import { Tv } from './routes/tv';
 import { Anime } from './routes/anime';
+import { vidsrc } from './scrapers/vidsrc';
 const app = express();
 const PORT = process.env.PORT || 3002;
 
@@ -27,13 +28,13 @@ app.get('/', async (req, res) => {
 
 app.get('/movie/:id',async (req:Request,res:Response)=>{
     const id = req.params.id
-    const movie = await Movie(id)
+    const movie = await vidsrc(id)
     res.send(movie)
 });
 
 app.get('/tv/:id/:ss/:ep',async(req:Request,res:Response)=>{
     const {id,ss,ep} = req.params
-    const tv = await Tv(id,ss,ep)
+    const tv = await vidsrc(id,ss,ep)
     res.send(tv)
 });
 

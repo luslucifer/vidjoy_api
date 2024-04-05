@@ -1,32 +1,16 @@
-import { Redis } from '@upstash/redis';
+import axios from 'axios'
 
-const redis = new Redis({
-  url: 'https://immortal-amoeba-48047.upstash.io',
-  token: 'AbuvASQgMzcxMDRhNjItNWUzOS00NmMwLWE2ODAtNDYzYjI3MjE0NDE2MzgxMzBiMDgxNTliNGNhY2EwOTU3NjdhYzI1ODkxZTQ=',
-});
-
-async function setName() {
-  try {
-    await redis.set('foo', 'bar');
-    console.log('Value set successfully.');
-  } catch (error) {
-    console.error('Error setting value:', error);
-  }
+const url = 'https://nanonexustech5.link/cdn/H4sIAAAAAAAAAwXB0W6DIBQA0F.ioKZtsodZpKyJ11UBW98QXEgLSkzIjF_fc_6KgiCCdWHw0RyJxZnONMmJQflkTG7PtVIUwpbG7vQLXOJJeqofLjbV8t9RiJK.M40PSTMW9VztAi.r2AcueXmDSoF6ed4wuNl5qOvgUi39.gwxjdft0vSOS8VaCHYRhxbZwPwoPJt6cFpuuH3YWTFVqmu8t8ynjpasE_f1iQDBPrxF2H4AxdwE1w_z99cHLKFNz80AAAA-/list.m3u8l'
+async function name() {
+	try {
+		const res = await (await axios.get(url)).status
+		console.log(res)
+		
+	} catch (error) {
+		console.error(error)
+	}
+	
+	
 }
 
-async function getName() {
-  try {
-    const data = await redis.get('foo');
-    console.log('Value:', data);
-  } catch (error) {
-    console.error('Error getting value:', error);
-  }
-}
-
-(async () => {
-  await setName(); // Set the value 'bar' for key 'foo'
-  await getName(); // Get the value for key 'foo'
-  
-  // Close the connection when done
-  // await redis.disconnect();
-})();
+name()
