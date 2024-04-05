@@ -5,7 +5,7 @@ import { putData,getData } from "../dbs/lmdb"
 import { Tv } from "../routes/tv"
 import { Movie } from "../routes/movie"
 
-const toUrl = 'https://vidsrc-bc567b0e907e.herokuapp.com/sded'
+const toUrl = 'https://vidsrc-bc567b0e907e.herokuapp.com/'
 const meUrl = 'https://moviekexonline-29aedc6d6588.herokuapp.com/'
 const nodeProxy = 'https://nodeproxy-1a962f2c7198.herokuapp.com/'
 // const vidsrc_working:boolean = true
