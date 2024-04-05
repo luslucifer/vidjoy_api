@@ -2,8 +2,10 @@ import axios from "axios"
 import { MediaData } from "../interfaces/mvtv"
 // import { mydb } from "../dbs/lmdb"
 import { putData,getData } from "../dbs/lmdb"
+import { Tv } from "../routes/tv"
+import { Movie } from "../routes/movie"
 
-const toUrl = 'https://vidsrc-bc567b0e907e.herokuapp.com/'
+const toUrl = 'https://vidsrc-bc567b0e907e.herokuapp.com/sded'
 const meUrl = 'https://moviekexonline-29aedc6d6588.herokuapp.com/'
 const nodeProxy = 'https://nodeproxy-1a962f2c7198.herokuapp.com/'
 // const vidsrc_working:boolean = true
@@ -42,17 +44,17 @@ data.m3u8[0]=modifiedM3u8
     }
   } catch (error) {
     console.error(`err in fetch data from vidsrc.to : ${error} | now will retry to vidsrc.me`)
+    
     if(ss==null){
-      const meRes:MediaData = await axios.get(meUrl+'movie/'+id)
-      return meRes
+      // const meRes:MediaData = await axios.get(meUrl+'movie/'+id)
+      // return meRes
+      return Movie(id)
     }else{
-      const meRes:MediaData = await axios.get(meUrl+'tv/'+id+'/'+ss+'/'+ep)
-      console.log(meRes)
-      return meRes
+      
+      return Tv(id,ss,ep)
       
     }
   }
-  
 
 }
 
@@ -113,11 +115,11 @@ export async function vidsrc(id:string,ss:string|null = null,ep:string|null = nu
  
 
   // console.log(data)
+  console.log(data)
   return data
 }
 
 
-vidsrc('1399','3','5')
 
 
  
