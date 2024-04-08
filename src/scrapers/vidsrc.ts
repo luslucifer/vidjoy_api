@@ -9,6 +9,7 @@ const toUrl = 'https://vidsrc-bc567b0e907e.herokuapp.com/'
 const meUrl = 'https://moviekexonline-29aedc6d6588.herokuapp.com/'
 // const nodeProxy = 'https://nodeproxy-1a962f2c7198.herokuapp.com/'
 const nodeProxy = 'https://first-app.vidsrcproxy.workers.dev/'
+const vidsrcmeProxy = 'https://proxy-vidsrc-me-0e71f022c893.herokuapp.com/fetch?url='
 // const vidsrc_working:boolean = true
 
 async function fetchinVidsrc(id:string,ss:string|null = null ,ep:string|null = null) {
@@ -49,10 +50,13 @@ data.m3u8[0]=modifiedM3u8
     if(ss==null){
       // const meRes:MediaData = await axios.get(meUrl+'movie/'+id)
       // return meRes
-      return Movie(id)
+      const x:MediaData =await Movie(id)
+      x.m3u8[0] = vidsrcmeProxy + encodeURIComponent(x.m3u8[0])
+      return x
     }else{
-      
-      return Tv(id,ss,ep)
+      const x:MediaData =await Tv(id,ss,ep)
+      x.m3u8[0] = vidsrcmeProxy + encodeURIComponent(x.m3u8[0])
+      return x
       
     }
   }
